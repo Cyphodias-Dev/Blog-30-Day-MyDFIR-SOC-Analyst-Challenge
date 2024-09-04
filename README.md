@@ -23,3 +23,5 @@ With these 3 items we can:
 - Create Reports
 - Create Alerts
 
+
+# Day 3 - Create your own Elasticsearch instance
