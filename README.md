@@ -24,7 +24,7 @@ With these 3 items we can:
 - Create Alerts
 
 You can find out more about the from the following URL:
-[title](https://www.elastic.co/elastic-stack/features)
+[https://www.elastic.co/elastic-stack/features](https://www.elastic.co/elastic-stack/features)
 
 
 # Day 3 - Create your own Elasticsearch instance 
