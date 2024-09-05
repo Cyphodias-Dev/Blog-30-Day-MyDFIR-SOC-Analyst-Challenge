@@ -4,7 +4,7 @@
 
 # Day 1 - Introduction & Diagram
 
-Today we had a look at what our environment will look like for this project and how everything will work together by creating the following diagram.
+Today I got a look at what our environment will look like for this project and how everything will work together by creating the following diagram.
 
 ![2024-09-03_21-28-29](https://github.com/user-attachments/assets/e6830c50-2249-4b45-8410-655c7c8d58d6)
 
@@ -23,5 +23,10 @@ With these 3 items we can:
 - Create Reports
 - Create Alerts
 
+You can find out more about the from the following URL:
+[title](https://www.elastic.co/elastic-stack/features)
 
-# Day 3 - Create your own Elasticsearch instance
+
+# Day 3 - Create your own Elasticsearch instance 
+
+I created my Elasticsearch instance in the cloud with MyDFIR's $300 credit through VULTR cloud services.  I was able to setup a Virtual Private Cloud that will contain all of our virtual machines.  I set up Elasticsearch with a VM running Ubuntu 22.04 LTS and configured a firewall all within the initial VPC.  The only modification that needed to be done was update the Ubuntu distro and modify the Elasticsearch YAML file for the proper ip address and port so the SOC Analyst instance will be able to connect to it.
