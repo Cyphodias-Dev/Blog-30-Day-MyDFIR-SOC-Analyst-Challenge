@@ -44,3 +44,6 @@ From the following URL [https://elastic.co/downloads/kibana](https://elastic.co/
 
 
 ## Day 5 - Windows Server 2022 Installation
+
+
+## Day 6 - Elastic Agent and Fleet Server Introduction
