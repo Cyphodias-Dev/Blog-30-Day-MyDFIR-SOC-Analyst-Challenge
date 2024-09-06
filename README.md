@@ -9,7 +9,7 @@ Here is the Syllabus for this challenge
 - Ingesting logs such as Sysmon
 
 ## Week 2
-- Introduction to breute force attacks
+- Introduction to brute force attacks
 - How to setup SSH and RDP servers
 - Create alerts and dashboards
 
