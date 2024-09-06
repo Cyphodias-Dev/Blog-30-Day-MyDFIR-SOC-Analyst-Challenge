@@ -41,3 +41,6 @@ I created my Elasticsearch instance in the cloud with MyDFIR's $300 credit throu
 ## Day 4 - Kibana Setup
 
 From the following URL [https://elastic.co/downloads/kibana](https://elastic.co/downloads/kibana) I copied the link after choosing the platform DEB x86_64. and within the same Ubuntu VM we installed Elastcisearch on we downloaded the Kibana deb file using the following command `wget https://artifacts.elastic.co/downloads/kibana/kibana-8.15.0-amd64.deb`.
+
+
+## Day 5 - Windows Server 2022 Installation
