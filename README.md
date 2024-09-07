@@ -126,7 +126,8 @@ In the "Fleet server hosts" section we'll click on the pencil icon on the right 
 
 The policy script to add an Elastic Agent in Powershell in the Windows VM should now go through with the message "Elastic Agent has been successfully installed" and will add a new listing to the Fleet Management section of the Elasticsearch GUI.
 
-I noticed when testing out the alerts that I wasn't able to just search for the end name
+### Side note results:
+I noticed when testing out the alerts that I wasn't able to just search for the end name like Steven does with "stevenrocks".  It only worked for me when typing out the whole name of the Windows Server Host name.  And the event_code listing wasn't showing up in any of my alerts.  I'll have to look into this when more time is available or I may have trouble getting the end results for the challenge.
 
 First week done!  But lots more to do and learn.
 
