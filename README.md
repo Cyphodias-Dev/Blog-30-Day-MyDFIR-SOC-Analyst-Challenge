@@ -95,11 +95,17 @@ Beats and Elastic Agents both have their pros and cons and depends on your objec
 **Feet Servers**: A server that allows you to manage multiple agents in a centralized location.  This simplifies the process of modifying or updating policies in just one place.
 
 
-### Day 7 - Install an Elastic Agent and Fleet Server
+### Day 7 - Elastic Agent and Fleet Server Setup Tutorial
 
+I created a new Ubuntu 22.04 LTS VM today to use for our Fleet Server on the VULTR cloud service (In the "Choose Plan" section the first option under "General Purpose" is fine. 1 vCPU, 4 GB Memory, & 60 GB NVMe storage).
 
+In the Elasticsearch GUI we'll begin adding our Fleet Server (Click on the hamburger icon at the top left -> Scroll down to Management -> Select Fleet).  Click on the blue button in the middle labelled "Add Fleet Server".  The two options presented on the right are "Quick Start" abd "Advanced".  For this challenge we're going to use "Quick Start"
 
+I labelled my server the same as the tutorial "MyDFIR-Fleet-Server" and the fleet server VM's IP on VULTR as a URL "https://(MyDFIR-Fleet-Server VM IP)".  And then click on the button below labelled "Generate Fleet Server policy".
 
+Once the Fleet Server VM is running we'll login to it using SSH with the VM IP and credendials listed on VULTR. and we'll update the VM `apt update && apt upgrade -y`.
+
+It will then provide a multi-line Linux command which we'll copy once 
 
 
 
