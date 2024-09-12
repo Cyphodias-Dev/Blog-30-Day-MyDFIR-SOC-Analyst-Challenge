@@ -1,6 +1,7 @@
 # My Blog for the 30-Day-MyDFIR-SOC-Analyst-Challenge
 ## 30 days of SOC skills.
 
+[YouTube playlist](https://www.youtube.com/playlist?list=PLG6KGSNK4PuBb0OjyDIdACZnb8AoNBeq6)
 
 Here is the Syllabus for this challenge
 ### Week 1
@@ -288,6 +289,33 @@ You can test brute force attacks out with MyDFIR's following lab if you like:
 [Active Directory Project (Home Lab)](https://www.youtube.com/watch?v=5OessbOgyEo&list=PLG6KGSNK4PuBWmX9NykU0wnWamjxdKhDJ&index=13)
 
 
-### Day 12 - 
+### Day 12 - Ubuntu Server 24.02 Installation
+Today we got to setup our SSH Server so that we can view the authentication logs for brute force attempts.
+
+In VULTR we did the following steps to deploy our SSH server:
+- Click the blue "Deploy+" button at the top right corner.
+- Select "Deploy New Server", the first listing in the drop down.
+- Choose type is "Cloud Compute - Shared CPU".
+- Select your closest location to you (eg New York (NJ)).
+- For the image we're going to choose Ubuntu 24.04 LTS x64.
+- For "Choose Plan" we'll select the "Regular Cloud Compute" Option (You'll get a pop up to select a higher plan.  Just select "No thanks") and we'll just select the first option (25 GB SSD, 1 vCPU, 1 GB Memory, 1 TB Bandwidth).
+- We'll remove all the "Additional Features" (Auto Backups & IPv6).
+- Server settings can be left as default
+- **Server Hostname & Label** - If you plan on entering the challenge giveaway you must use the folloiwng format "MYDFIR-Linux-<Your_Handle>" (eg. MYDFIR-Linux-Stevenrocks)
+- Click on the "Deploy Now" button at the bottom right hand corner.
+
+Once all of this is completed give the VM a few minutes to get up and running.  And, like before, we can log into it using a Windows Powershell or Command Prompt on your host computer (or whichever CLI you use on your host OS).  
+We'll run `ssh root@(MYDFIR-Linux-<Your_Handle> VM IP)`, type "yes", and then copy and paste your MYDFIR-Linux-<Your_Handle> VM's password.  Once again, we'll update our Linux VM with the following `apt update && apt upgrade -y`.
+
+**Authentication Logs**
+
+Let's take a look at some authentication logs.  If you move into `cd /var/log` you'll see the following files:
+`alternatives.log  auth.log       cloud-init.log         dmesg     image_build_date  kern.log   private  sysstat              watchdog`
+`apport.log        bootstrap.log  cloud-init-output.log  dpkg.log  installer         landscape  README   ufw.log              wtmp`
+`apt               btmp           dist-upgrade           faillog   journal           lastlog    syslog   unattended-upgrades`
+
+The "auth.log" file is the log that shows all of the authentication logs.  To view the contents we can run:
+`cat auth.log`
+
 
 
