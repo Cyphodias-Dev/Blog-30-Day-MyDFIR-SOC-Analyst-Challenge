@@ -26,7 +26,7 @@ Here is the Syllabus for this challenge
 
 
 
-### Day 1 - Introduction & Diagram
+## Day 1 - Introduction & Diagram
 
 Today I got a look at what the environment will look like for this project and how everything will work together by creating the following logical diagram.
 
@@ -34,7 +34,7 @@ Today I got a look at what the environment will look like for this project and h
 
 
 
-### Day 2 - ELK Stack
+## Day 2 - ELK Stack
 
 This is the core of the project used to collect, filter and view our data with the following three tools.  Elasticsearch, Logstash, and Kibana.
 
@@ -55,19 +55,19 @@ You can find out more about the from the following URL:
 
 
 
-### Day 3 - Create your own Elasticsearch instance 
+## Day 3 - Create your own Elasticsearch instance 
 
 I created my Elasticsearch instance in the cloud with MyDFIR's $300 credit through VULTR cloud services.  I was able to setup a Virtual Private Cloud (VPC) that will contain all of the virtual machines.  Next I set up a VM running Ubuntu 22.04 LTS (80GB NVMe storage, 4 vcores, & 16 GB memory) and was able to SSH into it from my host PC.  I copied the link from Elasticsearch's download page (platform DEB x86_64) [https://elastic.co/downloads/elasticsearch](https://elastic.co/downloads/elasticsearch) and installed it on my Ubuntu instance.  Once completed, I configured a firewall all within the initial VPC.  The only real modifications that needed to be done was to update the Ubuntu distro and modify the Elasticsearch YAML file for the proper IP address and port so the SOC Analyst instance will be able to connect to it.
 
 
 
-### Day 4 - Kibana Setup
+## Day 4 - Kibana Setup
 
 From the following URL [https://elastic.co/downloads/kibana](https://elastic.co/downloads/kibana) I copied the link after choosing the platform DEB x86_64. and within the same Ubuntu VM we installed Elastcisearch where we downloaded the Kibana deb file using the following command `wget https://artifacts.elastic.co/downloads/kibana/kibana-8.15.0-amd64.deb`.
 
 
 
-### Day 5 - Windows Server 2022 Installation
+## Day 5 - Windows Server 2022 Installation
 
 While installing the Windows Server 2022 VM Steven made a slight modification to the setup and added the changes to our inital logical diagram.  We're going to leave the Windows server and Ubuntu Server outside the VPC.  This will help protect our Fleet and Ticket Servers from being attacked if there was a potential breach.  This will also provide Windows Event Logs that we can use later on.
 
@@ -76,7 +76,7 @@ While installing the Windows Server 2022 VM Steven made a slight modification to
 
 
 
-### Day 6 - Elastic Agent and Fleet Server Introduction
+## Day 6 - Elastic Agent and Fleet Server Introduction
 
 - **Elastic Agent**: Used to provide a unified way of adding many types of security data such as metrics and logs that can be sent to Logstash or an Elasticsearch environment.  These agents are ran from policies that can be modified to your specifications and tell your end points what logs/data to send to a database and/or a Security Incident Event Manager (SIEM).  These can be installed in two ways:
 **Standalone**:  All configurations are applied to the Elastic Agent manually once installed.
@@ -96,7 +96,7 @@ Beats and Elastic Agents both have their pros and cons and depends on your objec
 **Feet Servers**: A server that allows you to manage multiple agents in a centralized location.  This simplifies the process of modifying or updating policies in just one place.
 
 
-### Day 7 - Elastic Agent and Fleet Server Setup Tutorial
+## Day 7 - Elastic Agent and Fleet Server Setup Tutorial
 
 ### Fleet Server Installation
 I created a new Ubuntu 22.04 LTS VM today to use for our Fleet Server on the VULTR cloud service (In the "Choose Plan" section the first option under "General Purpose" is fine. 1 vCPU, 4 GB Memory, & 60 GB NVMe storage).
@@ -133,7 +133,7 @@ I noticed when testing out the alerts that I wasn't able to just search for the 
 First week done!  But lots more to do and learn.
 
 
-### Day 8 - What is Sysmon?
+## Day 8 - What is Sysmon?
 
 Sysmon is a tool that monitors and logs system activity on an endpoint.  It can monitor actions such as:
 
@@ -174,7 +174,7 @@ This event ID shows up most commonly when attackers are looking to steal credent
 This process is triggered when a DNS is queried.
 
 
-### Day 9 - Sysmon Setup Tutorial
+## Day 9 - Sysmon Setup Tutorial
 Today went installed Sysmon by going to the following link:
 
 Sysmon (v15.15 as of this post)
@@ -233,8 +233,7 @@ And my first event in the Windows Logs (Even Viewer) under Applications and Serv
 
 ![Sysmon Event Viewer](https://github.com/user-attachments/assets/42173729-3bcf-4eea-8762-219582870bc6)
 
-
-### Day 10 - Elasticsearch Ingest Data Tutorial
+## Day 10 - Elasticsearch Ingest Data Tutorial
 
 Today we added Symon logs and Windows Defender logs (some of them) into our Elasticsearch instance. Once you log into your Elasticsearch instance the home page has the option to "Add Integrations" which we'll select.
 
@@ -262,7 +261,7 @@ If your Windows agent in Elastic shows no CPU or memory utilization (In Elastic 
 - Added a firewall rule in VULTR for TCP under port 9200 for all IPs.
 
 
-### Day 11 - What is a Brute Force Attack?
+## Day 11 - What is a Brute Force Attack?
  
 - **Brute Force Attack** - The attempt to try every combination of a password to gain access.  A good example of this is MyDFIR's luggage combination where every combination is attempted.
 
@@ -289,7 +288,7 @@ You can test brute force attacks out with MyDFIR's following lab if you like:
 [Active Directory Project (Home Lab)](https://www.youtube.com/watch?v=5OessbOgyEo&list=PLG6KGSNK4PuBWmX9NykU0wnWamjxdKhDJ&index=13)
 
 
-### Day 12 - Ubuntu Server 24.02 Installation
+## Day 12 - Ubuntu Server 24.02 Installation
 Today we got to setup our SSH Server so that we can view the authentication logs for brute force attempts.
 
 In VULTR we did the following steps to deploy our SSH server:
@@ -317,5 +316,95 @@ Let's take a look at some authentication logs.  If you move into `cd /var/log` y
 The "auth.log" file is the log that shows all of the authentication logs.  To view the contents we can run:
 `cat auth.log`
 
+```
+2024-09-12T22:30:50.067914+00:00 MYDFIR-Linux-Cyphodias sshd[13550]: Failed password for invalid user user7 from 201.124.227.239 port 53304 ssh2
+2024-09-12T22:30:51.186779+00:00 MYDFIR-Linux-Cyphodias sshd[13550]: Received disconnect from 201.124.227.239 port 53304:11: Bye Bye [preauth]
+2024-09-12T22:30:51.186933+00:00 MYDFIR-Linux-Cyphodias sshd[13550]: Disconnected from invalid user user7 201.124.227.239 port 53304 [preauth]
+2024-09-12T22:31:26.748799+00:00 MYDFIR-Linux-Cyphodias sshd[13552]: Invalid user admin from 43.128.107.63 port 38984
+2024-09-12T22:31:26.752559+00:00 MYDFIR-Linux-Cyphodias sshd[13552]: pam_unix(sshd:auth): check pass; user unknown
+2024-09-12T22:31:26.752641+00:00 MYDFIR-Linux-Cyphodias sshd[13552]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=43.128.107.63
+2024-09-12T22:31:28.705881+00:00 MYDFIR-Linux-Cyphodias sshd[13552]: Failed password for invalid user admin from 43.128.107.63 port 38984 ssh2
+2024-09-12T22:31:30.747633+00:00 MYDFIR-Linux-Cyphodias sshd[13552]: Received disconnect from 43.128.107.63 port 38984:11: Bye Bye [preauth]
+2024-09-12T22:31:30.748676+00:00 MYDFIR-Linux-Cyphodias sshd[13552]: Disconnected from invalid user admin 43.128.107.63 port 38984 [preauth]
+2024-09-12T22:32:06.641916+00:00 MYDFIR-Linux-Cyphodias sshd[13554]: Invalid user user from 103.213.238.91 port 37078
+2024-09-12T22:32:06.646099+00:00 MYDFIR-Linux-Cyphodias sshd[13554]: pam_unix(sshd:auth): check pass; user unknown
+2024-09-12T22:32:06.646206+00:00 MYDFIR-Linux-Cyphodias sshd[13554]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.213.238.91
+2024-09-12T22:32:09.091320+00:00 MYDFIR-Linux-Cyphodias sshd[13554]: Failed password for invalid user user from 103.213.238.91 port 37078 ssh2
+2024-09-12T22:32:10.367834+00:00 MYDFIR-Linux-Cyphodias sshd[13554]: Received disconnect from 103.213.238.91 port 37078:11: Bye Bye [preauth]
+2024-09-12T22:32:10.368133+00:00 MYDFIR-Linux-Cyphodias sshd[13554]: Disconnected from invalid user user 103.213.238.91 port 37078 [preauth]
+---
+```
+
+After I waited a few hours we can see some log entries "failed password" and "Disconnected from invalid user" among others.
+Let's try to filter some of this out to only show **failed** entries.
+Let's run `grep -i failed auth.log`
+
+```
+2024-09-12T22:30:50.067914+00:00 MYDFIR-Linux-Cyphodias sshd[13550]: Failed password for invalid user user7 from 201.124.227.239 port 53304 ssh2
+2024-09-12T22:31:28.705881+00:00 MYDFIR-Linux-Cyphodias sshd[13552]: Failed password for invalid user admin from 43.128.107.63 port 38984 ssh2
+2024-09-12T22:32:09.091320+00:00 MYDFIR-Linux-Cyphodias sshd[13554]: Failed password for invalid user user from 103.213.238.91 port 37078 ssh2
+2024-09-12T22:33:53.714178+00:00 MYDFIR-Linux-Cyphodias sshd[13556]: Failed password for invalid user ts3 from 161.35.25.207 port 47530 ssh2
+2024-09-12T22:33:57.348871+00:00 MYDFIR-Linux-Cyphodias sshd[13558]: Failed password for invalid user deployer from 27.254.235.12 port 51930 ssh2
+2024-09-12T22:34:22.211401+00:00 MYDFIR-Linux-Cyphodias sshd[13561]: Failed password for invalid user oracle from 91.212.166.37 port 48694 ssh2
+2024-09-12T22:35:00.304808+00:00 MYDFIR-Linux-Cyphodias sshd[13563]: Failed password for invalid user admin from 157.230.25.246 port 60514 ssh2
+2024-09-12T22:37:04.509277+00:00 MYDFIR-Linux-Cyphodias sshd[13569]: Failed password for invalid user admin from 47.113.224.38 port 53114 ssh2
+2024-09-12T22:37:28.166191+00:00 MYDFIR-Linux-Cyphodias sshd[13571]: Failed password for ubuntu from 159.203.110.93 port 58938 ssh2
+2024-09-12T22:37:37.768494+00:00 MYDFIR-Linux-Cyphodias sshd[13574]: Failed password for invalid user postgres from 161.35.25.207 port 52540 ssh2
+2024-09-12T22:37:38.358219+00:00 MYDFIR-Linux-Cyphodias sshd[13576]: Failed password for invalid user odoo13 from 201.124.227.239 port 49726 ssh2
+2024-09-12T22:37:41.916931+00:00 MYDFIR-Linux-Cyphodias sshd[13578]: Failed password for invalid user oracle from 157.230.25.246 port 50694 ssh2
+2024-09-12T22:37:52.607145+00:00 MYDFIR-Linux-Cyphodias sshd[13580]: Failed password for invalid user ts3server from 91.212.166.37 port 38828 ssh2
+2024-09-12T22:38:16.095744+00:00 MYDFIR-Linux-Cyphodias sshd[13582]: Failed password for invalid user ts3server from 161.35.25.207 port 32828 ssh2
+2024-09-12T22:38:20.022168+00:00 MYDFIR-Linux-Cyphodias sshd[13584]: Failed password for invalid user testuser from 157.230.25.246 port 48698 ssh2
+...
+```
+
+Nice!  Let's go one step further and try filtering just for failed attempts with 'root'.
+`grep -i failed auth.log | grep -i root`
+
+```
+024-09-12T22:38:31.237243+00:00 MYDFIR-Linux-Cyphodias sshd[13588]: Failed password for root from 91.212.166.37 port 33498 ssh2
+2024-09-12T22:42:59.902538+00:00 MYDFIR-Linux-Cyphodias sshd[13693]: Failed password for root from 103.213.238.91 port 36116 ssh2
+2024-09-12T22:43:15.644910+00:00 MYDFIR-Linux-Cyphodias sshd[13703]: Failed password for root from 157.230.25.246 port 60078 ssh2
+2024-09-12T22:43:49.810078+00:00 MYDFIR-Linux-Cyphodias sshd[13713]: Failed password for root from 161.35.25.207 port 43618 ssh2
+2024-09-12T22:43:53.704374+00:00 MYDFIR-Linux-Cyphodias sshd[13715]: Failed password for root from 103.213.238.91 port 49182 ssh2
+2024-09-12T22:44:01.943616+00:00 MYDFIR-Linux-Cyphodias sshd[13720]: Failed password for root from 27.254.235.12 port 52954 ssh2
+2024-09-12T22:44:10.571615+00:00 MYDFIR-Linux-Cyphodias sshd[13722]: Failed password for root from 91.212.166.37 port 54434 ssh2
+2024-09-12T22:45:29.373134+00:00 MYDFIR-Linux-Cyphodias sshd[13752]: Failed password for root from 91.212.166.37 port 47660 ssh2
+2024-09-12T22:46:25.498704+00:00 MYDFIR-Linux-Cyphodias sshd[13772]: Failed password for root from 157.230.25.246 port 42044 ssh2
+2024-09-12T22:47:38.410183+00:00 MYDFIR-Linux-Cyphodias sshd[13800]: Failed password for root from 161.35.25.207 port 52566 ssh2
+2024-09-12T22:47:40.868180+00:00 MYDFIR-Linux-Cyphodias sshd[13802]: Failed password for root from 157.230.25.246 port 59266 ssh2
+2024-09-12T22:48:52.409692+00:00 MYDFIR-Linux-Cyphodias sshd[13824]: Failed password for root from 161.35.25.207 port 53912 ssh2
+2024-09-12T22:49:25.763273+00:00 MYDFIR-Linux-Cyphodias sshd[13838]: Failed password for root from 91.212.166.37 port 33706 ssh2
+2024-09-12T22:49:51.923346+00:00 MYDFIR-Linux-Cyphodias sshd[13850]: Failed password for root from 159.203.110.93 port 38230 ssh2
+2024-09-12T22:50:58.545098+00:00 MYDFIR-Linux-Cyphodias sshd[13877]: Failed password for root from 201.124.227.239 port 50086 ssh2
+---
+```
+
+How about if we only wanted the IPs that were used to gain root access?  We can use the 'cut' command for this. The cut command removes sections of lines to show only what your searching for by selecting a specific ccolumn using a delimiter.  So if we used a space between words as our delimiter our command would look something like the following:
+`grep -i failed auth.log | grep -i root | cut -d ' ' -f 9`
+
+The -d ' ' tells the cut command to use a blank or space between each section/word,  The -f '9' will cut out the data at the 9th field/column in each line after the delimiter specified previously.
+
+```
+91.212.166.37
+103.213.238.91
+157.230.25.246
+161.35.25.207
+103.213.238.91
+27.254.235.12
+91.212.166.37
+91.212.166.37
+157.230.25.246
+161.35.25.207
+157.230.25.246
+161.35.25.207
+91.212.166.37
+159.203.110.93
+201.124.227.239
+---
+```
+
+And here is our list of IP addresses that have attempted a brute force attack to try and gain root access.
 
 
+### Day 13 - 
