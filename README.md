@@ -309,6 +309,7 @@ We'll run `ssh root@(MYDFIR-Linux-<Your_Handle> VM IP)`, type "yes", and then co
 **Authentication Logs**
 
 Let's take a look at some authentication logs.  If you move into `cd /var/log` you'll see the following files:
+
 `alternatives.log  auth.log       cloud-init.log         dmesg     image_build_date  kern.log   private  sysstat              watchdog`
 `apport.log        bootstrap.log  cloud-init-output.log  dpkg.log  installer         landscape  README   ufw.log              wtmp`
 `apt               btmp           dist-upgrade           faillog   journal           lastlog    syslog   unattended-upgrades`
@@ -337,6 +338,7 @@ The "auth.log" file is the log that shows all of the authentication logs.  To vi
 
 After I waited a few hours we can see some log entries "failed password" and "Disconnected from invalid user" among others.
 Let's try to filter some of this out to only show **failed** entries.
+
 Let's run `grep -i failed auth.log`
 
 ```
@@ -359,6 +361,7 @@ Let's run `grep -i failed auth.log`
 ```
 
 Nice!  Let's go one step further and try filtering just for failed attempts with 'root'.
+
 `grep -i failed auth.log | grep -i root`
 
 ```
@@ -381,6 +384,7 @@ Nice!  Let's go one step further and try filtering just for failed attempts with
 ```
 
 How about if we only wanted the IPs that were used to gain root access?  We can use the 'cut' command for this. The cut command removes sections of lines to show only what your searching for by selecting a specific ccolumn using a delimiter.  So if we used a space between words as our delimiter our command would look something like the following:
+
 `grep -i failed auth.log | grep -i root | cut -d ' ' -f 9`
 
 The -d ' ' tells the cut command to use a blank or space between each section/word,  The -f '9' will cut out the data at the 9th field/column in each line after the delimiter specified previously.
