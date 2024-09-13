@@ -185,36 +185,36 @@ And we're going to use Olaf Hartong's Sysmon configuration file:
 [https://raw.githubusercontent.com/olafhartong/sysmon-modular/master/sysmonconfig.xml](https://raw.githubusercontent.com/olafhartong/sysmon-modular/master/sysmonconfig.xml)
 
 Logging into our Windows Server VM we'll open up a Powershell terminal as Administrator.  Here is the usage info for Sysmon64.exe:
+```
+System Monitor v15.15 - System activity monitor
+By Mark Russinovich and Thomas Garnier
+Copyright (C) 2014-2024 Microsoft Corporation
+Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.
+Sysinternals - www.sysinternals.com
 
-`System Monitor v15.15 - System activity monitor`
-`By Mark Russinovich and Thomas Garnier`
-`Copyright (C) 2014-2024 Microsoft Corporation`
-`Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.`
-`Sysinternals - www.sysinternals.com`
+Usage:
+Install:                 Sysmon64.exe -i [<configfile>]
+Update configuration:    Sysmon64.exe -c [<configfile>]
+Install event manifest:  Sysmon64.exe -m
+Print schema:            Sysmon64.exe -s
+Uninstall:               Sysmon64.exe -u [force]`
+  -c   Update configuration of an installed Sysmon driver or dump the
+      `current configuration if no other argument is provided. Optionally
+       `take a configuration file.
+  -i   Install service and driver. Optionally take a configuration file.
+  -m   Install the event manifest (done on service install as well)).
+  -s   Print configuration schema definition of the specified version.
+       `Specify 'all' to dump all schema versions (default is latest)).
+  -u   Uninstall service and driver. Adding force causes uninstall to proceed
+       `even when some components are not installed.
+```
+The service logs events immediately and the driver installs as a boot-start driver to capture activity from early in the boot
+that the service will write to the event log when it starts.
 
-`Usage:`
-`Install:                 Sysmon64.exe -i [<configfile>]`
-`Update configuration:    Sysmon64.exe -c [<configfile>]`
-`Install event manifest:  Sysmon64.exe -m`
-`Print schema:            Sysmon64.exe -s`
-`Uninstall:               Sysmon64.exe -u [force]`
-  `-c   Update configuration of an installed Sysmon driver or dump the`
-      `current configuration if no other argument is provided. Optionally`
-       `take a configuration file.`
-  `-i   Install service and driver. Optionally take a configuration file.`
-  `-m   Install the event manifest (done on service install as well)).`
-  `-s   Print configuration schema definition of the specified version.`
-       `Specify 'all' to dump all schema versions (default is latest)).`
-  `-u   Uninstall service and driver. Adding force causes uninstall to proceed`
-       `even when some components are not installed.`
+On Vista and higher, events are stored in "Applications and Services Logs/Microsoft/Windows/Sysmon/Operational". On older
+systems, events are written to the System event log.
 
-`The service logs events immediately and the driver installs as a boot-start driver to capture activity from early in the boot
-that the service will write to the event log when it starts.`
-
-`On Vista and higher, events are stored in "Applications and Services Logs/Microsoft/Windows/Sysmon/Operational". On older
-systems, events are written to the System event log.`
-
-`Use the '-? config' command for configuration file documentation. More examples are available on the Sysinternals website.`
+Use the '-? config' command for configuration file documentation. More examples are available on the Sysinternals website.
 
 `Specify -accepteula to automatically accept the EULA on installation, otherwise you will be interactively prompted to accept it.`
 
