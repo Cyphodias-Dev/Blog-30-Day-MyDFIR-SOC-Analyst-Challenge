@@ -505,7 +505,7 @@ We can even map a successful authentication map by clicking on the 3 dots at the
 
 A new map window should show up with our Failed query string we used in the first map.  By modifiying the query in the discover section we found the key word for a successful attempt is labelled "Accepted" so we'll replace "Failed" at the end of our string to "Accepted".  To confirm it works you can change the timefrme to the last 90 days and you should see at least one shaded in option from your country.  Once you confirm you can click on the blue "Save and return" button at the top right corner.
 
-You can set your timeframe to your liking but as per the tutorial I'll select "Last 15 minutes" and click on the blue "Save" button at the top right corner.
+You can set your timeframe to your liking but as per the tutorial I'll select "Last 15 minutes" and click on the blue "Save" button at the top right corner.  You should now have a dashboard showing world maps of failed and successful SSH brute force attempts by country!
 
 ![Elastic dashboard duel map](https://github.com/user-attachments/assets/eae407e6-606c-47d5-bf23-22500d2d10ce)
 
