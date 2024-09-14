@@ -35,6 +35,7 @@ Today I got a look at what the environment will look like for this project and h
 
 
 ## Day 2 - ELK Stack
+**Objective:  Better understanding of what the ELK stack is and the benefits.**
 
 This is the core of the project used to collect, filter and view our data with the following three tools.  Elasticsearch, Logstash, and Kibana.
 
@@ -56,18 +57,21 @@ You can find out more about the from the following URL:
 
 
 ## Day 3 - Create your own Elasticsearch instance 
+**Objective:  Learn how to spin up your own Elasticsearch instance.**
 
 I created my Elasticsearch instance in the cloud with MyDFIR's $300 credit through VULTR cloud services.  I was able to setup a Virtual Private Cloud (VPC) that will contain all of the virtual machines.  Next I set up a VM running Ubuntu 22.04 LTS (80GB NVMe storage, 4 vcores, & 16 GB memory) and was able to SSH into it from my host PC.  I copied the link from Elasticsearch's download page (platform DEB x86_64) [https://elastic.co/downloads/elasticsearch](https://elastic.co/downloads/elasticsearch) and installed it on my Ubuntu instance.  Once completed, I configured a firewall all within the initial VPC.  The only real modifications that needed to be done was to update the Ubuntu distro and modify the Elasticsearch YAML file for the proper IP address and port so the SOC Analyst instance will be able to connect to it.
 
 
 
 ## Day 4 - Kibana Setup
+**Objective:  Learn how to install your own Kibana instance.**
 
 From the following URL [https://elastic.co/downloads/kibana](https://elastic.co/downloads/kibana) I copied the link after choosing the platform DEB x86_64. and within the same Ubuntu VM we installed Elastcisearch where we downloaded the Kibana deb file using the following command `wget https://artifacts.elastic.co/downloads/kibana/kibana-8.15.0-amd64.deb`.
 
 
 
 ## Day 5 - Windows Server 2022 Installation
+**Objective:  Have a Windows Server with RDP exposed to the internet.**
 
 While installing the Windows Server 2022 VM Steven made a slight modification to the setup and added the changes to our inital logical diagram.  We're going to leave the Windows server and Ubuntu Server outside the VPC.  This will help protect our Fleet and Ticket Servers from being attacked if there was a potential breach.  This will also provide Windows Event Logs that we can use later on.
 
@@ -77,6 +81,7 @@ While installing the Windows Server 2022 VM Steven made a slight modification to
 
 
 ## Day 6 - Elastic Agent and Fleet Server Introduction
+**Objective:  Learn what a Fleet Server is and the Elastic Agent.**
 
 - **Elastic Agent**: Used to provide a unified way of adding many types of security data such as metrics and logs that can be sent to Logstash or an Elasticsearch environment.  These agents are ran from policies that can be modified to your specifications and tell your end points what logs/data to send to a database and/or a Security Incident Event Manager (SIEM).  These can be installed in two ways:
 **Standalone**:  All configurations are applied to the Elastic Agent manually once installed.
@@ -97,6 +102,7 @@ Beats and Elastic Agents both have their pros and cons and depends on your objec
 
 
 ## Day 7 - Elastic Agent and Fleet Server Setup Tutorial
+**Objective:  Install Elastic Agent on Windows Server.  Enroll the Windows Server into a Fleet**
 
 ### Fleet Server Installation
 I created a new Ubuntu 22.04 LTS VM today to use for our Fleet Server on the VULTR cloud service (In the "Choose Plan" section the first option under "General Purpose" is fine. 1 vCPU, 4 GB Memory, & 60 GB NVMe storage).
@@ -134,6 +140,7 @@ First week done!  But lots more to do and learn.
 
 
 ## Day 8 - What is Sysmon?
+**Objective:  Learn about Sysmon and what it can do.**
 
 Sysmon is a tool that monitors and logs system activity on an endpoint.  It can monitor actions such as:
 
@@ -175,6 +182,8 @@ This process is triggered when a DNS is queried.
 
 
 ## Day 9 - Sysmon Setup Tutorial
+**Objective:  Install Sysmon onto Windows Server and confirm telemetry.**
+
 Today went installed Sysmon by going to the following link:
 
 Sysmon (v15.15 as of this post)
@@ -234,6 +243,7 @@ And my first event in the Windows Logs (Even Viewer) under Applications and Serv
 ![Sysmon Event Viewer](https://github.com/user-attachments/assets/42173729-3bcf-4eea-8762-219582870bc6)
 
 ## Day 10 - Elasticsearch Ingest Data Tutorial
+**Objective:  Learn how to ingest Sysmon and Windows Defender logs into Elasticsearch.**
 
 Today we added Symon logs and Windows Defender logs (some of them) into our Elasticsearch instance. Once you log into your Elasticsearch instance the home page has the option to "Add Integrations" which we'll select.
 
@@ -262,6 +272,7 @@ If your Windows agent in Elastic shows no CPU or memory utilization (In Elastic 
 
 
 ## Day 11 - What is a Brute Force Attack?
+**Objective:  Learn more about brute force attacks, common tools and how to protect yourself.**
  
 - **Brute Force Attack** - The attempt to try every combination of a password to gain access.  A good example of this is MyDFIR's luggage combination where every combination is attempted.
 
@@ -289,6 +300,8 @@ You can test brute force attacks out with MyDFIR's following lab if you like:
 
 
 ## Day 12 - Ubuntu Server 24.02 Installation
+**Objective:  Setup SSH Server and view authentication logs.**
+
 Today we got to setup our SSH Server so that we can view the authentication logs for brute force attempts.
 
 In VULTR we did the following steps to deploy our SSH server:
@@ -411,7 +424,9 @@ The -d ' ' tells the cut command to use a blank or space between each section/wo
 And here is our list of IP addresses that have attempted a brute force attack to try and gain root access.
 
 
-### Day 13 - How To Install Elastic Agent on Ubuntu
+## Day 13 - How To Install Elastic Agent on Ubuntu
+**Objective:  Install Elastic Agent onto Linux Ubuntu Server.**
+
 Just like the last two (fleet server & Windows Server) the first step is to add a policy for our agent.
 - Under the hamburger menu we'll open up Fleet under the Management section.
 - Within Fleet we'll select "Agent policies" and click on the blue button "Create agent policy" on the right.
@@ -443,4 +458,57 @@ This will show the end result in our table alerts.
 ![Elastic message field alerts](https://github.com/user-attachments/assets/741e70b4-f258-4503-a66a-9379ef217f98)
 
 
-### Day 14 - 
+## Day 14 - How To Create Alerts and Dashboards in Kibana
+**Objective:  Create SSH Brute Force Alert & Dashboard**
+
+
+### Alert Creation
+
+To make a brute force alert in your Elastic instance we want to capture a few things first:  Failed attempts, user, and source ip.  After searching for a bit and the help of the Day 14 tutorial, the fields we want to add to our alart are the following:
+- system.auth.ssh.event
+- user.name
+- source.ip
+
+To add a field as a column you just click on the small circled plus sign symbol to the right when hovering over a field name.  We also added "souce.geo.country_name" as well to show the country origin.  Your data may be different but the format should look like the below image.
+
+![Elastic Discover filtered Failed SSH columns](https://github.com/user-attachments/assets/60dd697f-4d02-4ed8-bc0f-65316a4fd3eb)
+
+We can save this query as an alert by click "Alerts" at the top right corner and selecting "Create search threshold rule".  A new window on the right should appear and we'll give our Alert a name "MyDFIR-SSH Brute Force Activity-(Your handle name)".
+
+The one thing we want to change in here is the "IS ABOVE" field from 1000 to 5 so we can see more alerts more often.  The rest can be left as default and we can click on the blue "Save" button.  If there's no actions you might get another window come up which you can just click on the "Save Rule" button.
+
+### Dashboard Creation
+
+The first thing we'll need is to build our search query string from the alert we just made.
+
+`system.auth.ssh.event : * and agent.name: MYDFIR-Linux-(your handle name) and system.auth.ssh.event: Failed`
+
+You can confirm it works by pasting it in the filter field of the discover section as it should show the same data as your alert.  Once that's confirmed we can move into the maps section (Hamburger menu -> Analytics -> Maps) and paste our query string into the search field at the top.  Next we'll select the blue "Add layer" button on the right.
+
+![Elastic Maps Add Layer Menu](https://github.com/user-attachments/assets/3c953f60-d974-4c13-bdd5-dc7e35107c67)
+
+There are a lot of options but the one we want is "Choropleth" which will shade the locations that attempted a Brute Force atack.
+
+The next section we'll leave the Boundary Source as "Administrative boundaries from the Elastic Maps Service".  In the EMS boundaries we'll select "World Countries" and under Statistics source for the "Data view" we'll pick the ".alerts-security.alerts..." option which should be the same data view we're using in the Discover section and verify with the blue drop down underneath the Hamburger menu.
+
+![Elastic Dicover Data view](https://github.com/user-attachments/assets/f2e5a1b8-6736-42f8-8e72-a5afb7c703c1)
+
+And for the "Join field" we'll choose `source.geo.country.iso.code`.  Click on the blue "Add and continue" button at the bottome right.  The rest of the settings can be left as default and we can click on the blue "Save" button at the top right corner.
+
+We'll give our Map a title like "SSH Failed Authentications" and to add this to a dashboard we'll select the "New" option and select the blue "Save and go to Dashboard" button.
+
+Finally to save the dashboard we select the blue "Save" button at the top right corner and in the new window we'll name it "MyDFIR-Authenticaiton-Activity" and clck on the blue "Save" button within that window and we should see the below map with various countries colored in.
+
+![SSH Failed Authentications Map](https://github.com/user-attachments/assets/55bc33c8-4b70-4a27-a5e1-8511fc264f52)
+
+We can even map a successful authentication map by clicking on the 3 dots at the top right corner of your map and selecting duplicate.  And we'll give the new map a title such as "SSH Successful Authentications".  We'll need to modify our query to only look at successful attempts so we'll click on the 'Edit" link in the Query section below.
+
+A new map window should show up with our Failed query string we used in the first map.  By modifiying the query in the discover section we found the key word for a successful attempt is labelled "Accepted" so we'll replace "Failed" at the end of our string to "Accepted".  To confirm it works you can change the timefrme to the last 90 days and you should see at least one shaded in option from your country.  Once you confirm you can click on the blue "Save and return" button at the top right corner.
+
+You can set your timeframe to your liking but as per the tutorial I'll select "Last 15 minutes" and click on the blue "Save" button at the top right corner.
+
+![Elastic dashboard duel map](https://github.com/user-attachments/assets/eae407e6-606c-47d5-bf23-22500d2d10ce)
+
+
+## Day 15 - 
+
