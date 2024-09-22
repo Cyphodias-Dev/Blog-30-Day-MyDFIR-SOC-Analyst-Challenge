@@ -729,7 +729,7 @@ There are a ton of C2's out in the wild but here are some of the more common one
 ![Attack diagram](https://github.com/user-attachments/assets/47daa61f-2452-4abe-a5dc-b7215166c531)
 
 
-## Day 20 - Mythic Server Setup Tutoria
+## Day 20 - Mythic Server Setup Tutorial
 **Objective:  Setup Mythic C2 Server and learn how Mythic works.**
 
 In VULTR (or your cloud provider of choice) we're going to spin up an Ubuntu 22.04 VM for our Mythic C2 Server.  The minimum you specs you want to use is 2 CPUs and 4 GB of RAM.  We also chose Cloud Compute-Shared CPU without Auto Backups or IPv6.  And for the Server Hostname we called it `MyDFIR-MYTHIC`.
