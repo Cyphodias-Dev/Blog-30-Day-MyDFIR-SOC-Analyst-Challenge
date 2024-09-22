@@ -723,8 +723,13 @@ There are a ton of C2's out in the wild but here are some of the more common one
 [https://docs.mythic-c2.net/](https://docs.mythic-c2.net/)
 
 
+## Day 19 - How To Create an Attack Diagram
+**Objective:  Create an attack diagram that maps out your plan of attack.**
+
+![Attack diagram](https://github.com/user-attachments/assets/47daa61f-2452-4abe-a5dc-b7215166c531)
 
 
+## Day 20 - 
 
 
 
