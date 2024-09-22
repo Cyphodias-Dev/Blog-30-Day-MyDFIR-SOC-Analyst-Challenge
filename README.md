@@ -771,6 +771,11 @@ There are lots of options in here that we'll use in the coming days.  Feel free 
 ![Mythic Dashboard](https://github.com/user-attachments/assets/1769b4bd-30e4-4cae-ad7a-ed61083d0a70)
 
 
+## Day 21 - Mythic Agent Setup Tutorial
+**Objective:  Learn how to perform a brute force attack, generate a Mythic agent and establish C2.**
+
+
+
 
 
 
