@@ -1088,3 +1088,6 @@ the file will be shown under the "File" tab (The paperclip icon).  You can even 
 ![Mythic dashboard - File tab - Downoaded file display with More display option (hashes)](https://github.com/user-attachments/assets/526e72c3-43d6-422f-9e42-6e22e559da01)
 
 
+## Day 22 - How To Create Alerts and Dashboards in Kibana - Part 4
+**Objective:  Create an alert and dashboard based on the telemetry generatoed by Mythic.**
+
