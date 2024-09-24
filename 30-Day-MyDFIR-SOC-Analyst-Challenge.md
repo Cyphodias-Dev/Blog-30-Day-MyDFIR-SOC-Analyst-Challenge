@@ -1,7 +1,7 @@
 # My Blog for the 30-Day-MyDFIR-SOC-Analyst-Challenge
 ## 30 days of SOC skills.
 
-[YouTube playlist](https://www.youtube.com/playlist?list=PLG6KGSNK4PuBb0OjyDIdACZnb8AoNBeq6)
+[30-Day MYDFIR SOC Analyst Challenge YouTube playlist](https://www.youtube.com/playlist?list=PLG6KGSNK4PuBb0OjyDIdACZnb8AoNBeq6)
 
 Here is the Syllabus for this challenge
 ### Week 1
