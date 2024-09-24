@@ -3,7 +3,7 @@
 
 [30-Day MYDFIR SOC Analyst Challenge YouTube playlist](https://www.youtube.com/playlist?list=PLG6KGSNK4PuBb0OjyDIdACZnb8AoNBeq6)
 
-Here is the Syllabus for this challenge
+Here is the Syllabus for this challenge:
 ### Week 1
 - Introduction to ELK
 - How to setup ELK
