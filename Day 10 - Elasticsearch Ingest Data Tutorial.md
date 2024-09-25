@@ -5,7 +5,7 @@ Today we added Symon logs and Windows Defender logs (some of them) into our Elas
 
 ![Add_Integrations](https://github.com/user-attachments/assets/a6534d10-7f55-4b61-89aa-f10f53b36be1)
 
-The one we want is "Custom Windows Event Logs" which we can search for and click on "Add Custom Windows Event Logs" at the top right corner.
+The one we want is "Custom Windows Event Logs" which we can search for and click on the blue "Add Custom Windows Event Logs" button at the top right corner.
 
 **Sysmon**
 - Step 1: For Sysmon we'll call it "MYDFIR-WIN-Sysmon" and a description of "Collect Sysmon Logs".  Everything else we can leave as default.
