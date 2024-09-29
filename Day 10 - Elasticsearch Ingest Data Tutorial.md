@@ -22,6 +22,6 @@ You should have two integration listings showing now.
 
 **Troublwshooting log ingestion**
 
-If your Windows agent in Elastic shows no CPU or memory utilization (In Elastic under Hamburger menu -> Management -> Fleet -> and clicking on your Windows Agent) we'll perform the following stops to troubleshoot:
+If your Windows agent in Elastic shows no CPU or memory utilization (In Elastic under Hamburger menu -> Management -> Fleet -> and clicking on your Windows Agent) we'll perform the following steps to troubleshoot:
 - We'll restart our Elastic Service in our Windows VM.
 - Added a firewall rule in VULTR for TCP under port 9200 for all IPs.
