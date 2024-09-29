@@ -83,7 +83,7 @@ Now that we have the credentials as the attacker we can use a tool called "xfree
 ```
 xfreerdp /u:Administrator /p:<Your WIN password> /v:<Your WIN IP>:3389
 ```
-It will ask you if you trust the certificate.  We'll enter `Y`.  And just like in the movies "We're in!".
+It will ask you if you trust the certificate.  We'll enter "Y".  And just like they say in the movies "I'm in!".
 
 ![Kali xfreerdp session](https://github.com/user-attachments/assets/ad9e59b6-6720-4544-8fb1-7790d95abbc0)
 
